@@ -11,21 +11,21 @@ class Course{
 
     // Funktion för att hämta alla kurser
     public function getCourses(){
-            // SQL-fråga
-            $sql = $this->conn->prepare("SELECT * FROM " . $this->db_table . "");
-            $sql->execute();
+        // SQL-fråga
+        $sql = $this->conn->prepare("SELECT * FROM " . $this->db_table . "");
+        $sql->execute();
         
-            /* Hämtar alla rader från databasen */
-            return $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-            }
+        /* Hämtar alla rader från databasen */
+        return $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+    }
     // Funktion för att hämta en specifik kurs
     public function getSpecifikCourse($id){
-            // SQL-fråga
-            $sql = $this->conn->prepare("SELECT * FROM " . $this->db_table ." WHERE id = $id");
-            $sql->execute();
+        // SQL-fråga
+        $sql = $this->conn->prepare("SELECT * FROM " . $this->db_table ." WHERE id = $id");
+        $sql->execute();
         
-            /* Hämtar specifik rad från databasen*/
-            return $result = $sql->fetch(PDO::FETCH_ASSOC);  
+        /* Hämtar specifik rad från databasen*/
+        return $result = $sql->fetch(PDO::FETCH_ASSOC);  
     }
     // Funktion för att lägga till en kurs
     public function addCourse($code, $name, $progression, $course_syllabus){
