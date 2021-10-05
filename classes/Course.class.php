@@ -2,7 +2,7 @@
 
 class Course{
     // Variabel för att enklare komma åt tabellen i databasen
-    private $db_table = "coursecollection";
+    private $db_table = "testcourses";
     private $conn;
 
     public function __construct($db){
@@ -29,16 +29,8 @@ class Course{
     }
     // Funktion för att lägga till en kurs
     public function addCourse($code, $name, $progression, $course_syllabus){
-        /*
-        $data = [
-            'code' => 'test',
-            'name' => 'test',
-            'progression' => 'A',
-            'course_syllabus' => 'test',
-        ];
-        */
         // SQL-fråga som skriver till databasen med värden
-        $sql = "INSERT INTO coursecollection (code, name, progression, course_syllabus)
+        $sql = "INSERT INTO testcourses (code, name, progression, course_syllabus)
         VALUES ('$code', '$name', '$progression','$course_syllabus')";
         // use exec() because no results are returned
         $this->conn->exec($sql);
@@ -47,9 +39,8 @@ class Course{
     // Funktion för att uppdatera en kurs
     public function updateCourse($id, $code, $name, $progression, $course_syllabus){
         // SQL-fråga som uppdaterar kurs genom att skicka med nya värden
-        $sql = "UPDATE coursecollection SET code = '$code', name = '$name', progression = '$progression', course_syllabus = '$course_syllabus' WHERE id = $id";
+        $sql = "UPDATE testcourses SET code = '$code', name = '$name', progression = '$progression', course_syllabus = '$course_syllabus' WHERE id = $id";
         $this->conn->exec($sql);
-
     }
 
     // Funktion för att radera en kurs
@@ -58,15 +49,6 @@ class Course{
         $sql = "DELETE FROM ". $this->db_table." WHERE id = $id";
         $this->conn->exec($sql);
     }
-
-    
-
-    
-
-
-
-
-
 
 }
 
